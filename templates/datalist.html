@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student List</title>
+
+  <style>
+    /* CSS styling */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-left: 20px;
+
+
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    input[type=button] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    form {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    label {
+      font-size: 1.2rem;
+    }
+
+    input[type=text] {
+      width: 50%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #4CAF50;
+      border-radius: 4px;
+    }
+
+    .Button:hover {
+      background-color: #2E8B57;
+    }
+
+    .mid {
+      text-align: center;
+    }
+  </style>
+  <style>
+    body {
+      background-image: url('https://images.pexels.com/photos/1172840/pexels-photo-1172840.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-repeat: no repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="/FORM"><button>
+    <h4>ADD STUDENT</h4>
+  </button></a>
+
+
+  <h1 style="color:#4CAF50">Student List</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+        <th>Event</th>
+        <th>Email</th>
+        <th>Mobile Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+
+      <tr>
+        <td>{{ student.First_Name }}</td>
+        <td>{{ student.Last_Name }}</td>
+        <td>{{ student.DEPARTMENT }}</td>
+        <td>{{ student.EVENT }}</td>
+        <td>{{ student.Email_Id }}</td>
+        <td>{{ student.tele }}</td>
+        </br>
+        <td>
+          <form action="{{ url_for('delete', tele=student.tele) }}" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+        <td>
+          <form action="{{ url_for('update', tele=student.tele) }}" method="get">
+            <button type="submit">Edit</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+
+</html>
